@@ -1,6 +1,7 @@
 package pe.edu.cibertec.curso_service_grupo10.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import pe.edu.cibertec.curso_service_grupo10.repository.CursoRepository;
 
 import java.util.List;
 
+@RefreshScope
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/cursos")
