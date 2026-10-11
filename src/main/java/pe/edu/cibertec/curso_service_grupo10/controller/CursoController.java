@@ -1,4 +1,3 @@
-
 package pe.edu.cibertec.curso_service_grupo10.controller;
 
 import lombok.RequiredArgsConstructor;
@@ -7,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import pe.edu.cibertec.curso_service_grupo10.dto.CursoDisponibilidadDto;
 import pe.edu.cibertec.curso_service_grupo10.model.Curso;
 import pe.edu.cibertec.curso_service_grupo10.repository.CursoRepository;
@@ -18,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/cursos")
 public class CursoController {
+
     private final CursoRepository cursoRepository;
 
     @GetMapping("/{idCurso}")
@@ -25,7 +24,8 @@ public class CursoController {
             @PathVariable Long idCurso) {
 
         return cursoRepository.findById(idCurso)
-                .map(curso -> ResponseEntity.ok(convertirADTO(curso)))
+                .map(this::convertirADTO)
+                .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
